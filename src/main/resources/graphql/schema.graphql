@@ -1,0 +1,38 @@
+# ==========================================
+# src/main/resources/graphql/schema.graphqls
+# ==========================================
+
+
+type User {
+id: String!
+name: String
+email: String
+status: String
+identify: Int
+}
+
+type Order {
+id: String!
+orderId: String
+amount: Float
+status: String
+}
+
+type Query {
+    users: [User!]!
+    orders: [Order!]!
+    documentById(id: String!): GenericData
+    getUserById(identify: Int!): User
+}
+
+type Mutation {
+    updateUserNameByIdentify(identify: Int, newName: String!): User
+}
+
+type GenericData {
+id: String!
+type: String!
+data: JSON!
+}
+
+scalar JSON
